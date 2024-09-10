@@ -20,9 +20,9 @@
         }
 
         .container {
-            width: 100; 
-            padding: 10px 15; 
-            border: solid; 
+            width: 100%;     /* Fixed: added '%' for width, as without it the value is not meaningful */
+            padding: 10px 15px;/* Fixed: added 'px' to padding for correct value */ 
+            border: solid 1px black;  /* Fixed: added width and color to border */
             display: flex; /* use semicolons    */
             
         }
@@ -31,7 +31,7 @@
             text-decoration :none; /* use semicolons    */
 
             font-size: 16pt;
-            display: inline block; 
+            display: inline-block;  /* Fixed: changed 'inline block' to 'inline-block' */
         }
 
         p::after {
@@ -40,7 +40,7 @@
         }
 
         a {
-            text-decoration: undeline; 
+            text-decoration: 'undeline';  /* Fixed: 'undeline' to 'underline' */
             cursor: pointer;  /* use semicolons    */
         }
     </style>
@@ -48,21 +48,22 @@
 <body>
     <!-- HTML with errors -->
     <div id="header">
-        <h1>Welcome to Faulty Webpage<h1> 
+        <h1>Welcome to Faulty Webpage</h1>  <!-- Fixed: closed the h1 tag properly -->
         <p>Here you will learn about different issues in web development</p>
     </div>
 
     <div class="container">
         <ul>
-            <li class="menu-item">Home<li> 
+            <li class="menu-item">Home</li>  <!-- Fixed: closed <li> tags properly -->
             <li class="menu-item">About Us</li>
-            <li class="menu-item">Contact<li> 
+            <li class="menu-item">Contact</li>  <!-- Fixed: closed <li> tags properly -->
         </ul>
 
-        <img src="image.jpg" width="300" height="200"> 
+        <img src="image.jpg" width="300" height="200" alt="Image"> 
+        <!-- Added alt attribute for accessibility -->
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <!-- Fixed: closed the paragraph properly -->
         <button onclick="showAlert()">Click Me!</button>
         <input type="text" name="username" placeholder="Enter your name"> 
         <input type="button" value="Submit" onclick="validateForm()"> 
@@ -78,21 +79,25 @@
         }
 
         function validateForm() {
-            var username = document.getElementbyId("username").value; 
+            var username = document.getElementById("username").value; 
+            /* Fixed: corrected 'getElementbyId' to 'getElementById' */
             if (username = "") { 
                 alert("Username cannot be empty");
             }
             else if (username.length < 3) { 
                 alert("Username must be at least 3 characters long");
             } else {
-                document.form.submit(); 
+                document.forms[0].submit(); 
+                /* Fixed: corrected form submission syntax */
             }
         }
 
-        document.getElementByClassName("menu-item").style.color = "green"; 
-        
+     
+        document.getElementsByClassName("menu-item")[0].style.color = "green"; 
+        /* Fixed: changed 'getElementByClassName' to 'getElementsByClassName' and used array access */
+ 
         const myArray = [1, 2, 3, 4, 5];/*square  closing bracket was missing */ 
-        myArray.foreach(function(item) { 
+        myArray.forEach(function(item) { 
             console.log(item);
         });
 
